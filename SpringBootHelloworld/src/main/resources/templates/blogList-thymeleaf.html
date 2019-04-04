@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/css/main.css"/>
+    <script src="/js/main.js"></script>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+当前第<span th:text="${blogs.number}">this is mock data</span>页
+<br/>
+当前页显示多少条:<span th:text="${blogs.numberOfElements}">this is mock data</span>
+<br/>
+是否第一页:<span th:text="${blogs.first}">this is mock data</span>
+<br/>
+是否最后一页:<span th:text="${blogs.last}">this is mock data</span>
+<br/>
+总页数:<span th:text="${blogs.totalPages}">this is mock data</span>
+<br/>
+总结果数:<span th:text="${blogs.totalElements}">this is mock data</span>
+<br/>
+每页显示多少条:<span th:text="${blogs.size}">this is mock data</span>
+<br/>
+<div class="blog-post" th:each="blog: ${blogs.content}">
+    content:
+    <div th:text="${blog.content}">
+    </div>
+    <br/>
+    <h3 class="blog-post-title"><a th:text="${blog.title}" th:href="@{'/blog/' + ${blog.id}}"/></h3>
+</div>
+</body>
+</html>

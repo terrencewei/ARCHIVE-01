@@ -1,0 +1,11 @@
+server:
+  port: 9000
+spring:
+    batch:
+      initialize-schema: always
+    jpa:
+      hibernate:
+        ddl-auto: create
+      show-sql: true
+    profiles:
+      active: hsqldb

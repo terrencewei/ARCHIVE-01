@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mySpringBootApp">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"/>
+    <script src="webjars/jquery/1.11.1/jquery.min.js"></script>
+    <script src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+    <script src="webjars/angularjs/1.6.2/angular.min.js"></script>
+    <script src="webjars/angularjs/1.6.2/angular-route.js"></script>
+    <script src="/js/angularJS/app.js"></script>
+    <script src="/js/angularJS/appConfig.js"></script>
+    <script src="/js/angularJS/appController.js"></script>
+    <script src="/js/angularJS/appDirective.js"></script>
+    <script src="/js/angularJS/appService.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">天气预报</a>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><i class="fa fa-home"></i>首页</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <div ng-view></div>
+    </div>
+</body>
+
+</html>

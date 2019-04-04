@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: discovery-service
+  profiles:
+    active: dev
+server:
+  port: 8080
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: localhost
+  server:
+    enable-self-preservation: true
+---
+spring:
+  profiles: dev
+eureka:
+  client:
+    service-url:
+      defaultZone: ${eurekaClientServiceUrlDefaultZone}
+    registerWithEureka: false
+    fetchRegistry: false
+---
+spring:
+  profiles: peer1
+eureka:
+  client:
+    service-url:
+      defaultZone: ${eurekaClientServiceUrlDefaultZonePeer1}
+    registerWithEureka: true
+    fetchRegistry: true
+  instance:
+    prefer-ip-address: false
+    hostname: eurekapeer1
+---
+spring:
+  profiles: peer2
+eureka:
+  client:
+    service-url:
+      defaultZone: ${eurekaClientServiceUrlDefaultZonePeer2}
+    registerWithEureka: true
+    fetchRegistry: true
+  instance:
+    prefer-ip-address: false
+    hostname: eurekapeer2

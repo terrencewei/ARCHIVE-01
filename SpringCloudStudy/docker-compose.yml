@@ -1,0 +1,85 @@
+#version: '3'
+# to use memory limit feature in docker-compose, should downgrade version to '2'
+version: '2'
+services:
+  discovery-service-1:
+    mem_limit: 1280M
+    image: springbootstudy_discovery-service
+    entrypoint: java -jar /app.jar
+    ports:
+     - "8081:8081"
+    environment:
+     - server.port=$EUREKA_SERVER_PORT1
+     - spring.profiles.active=peer1
+     - eurekaClientServiceUrlDefaultZonePeer1=http://eurekapeer2:$EUREKA_SERVER_PORT2/eureka
+    extra_hosts:
+      eurekapeer2: $EUREKA_SERVER_IP
+    restart: always
+  discovery-service-2:
+    mem_limit: 1280M
+    image: springbootstudy_discovery-service
+    entrypoint: java -jar /app.jar
+    ports:
+     - "8082:8082"
+    environment:
+     - server.port=$EUREKA_SERVER_PORT2
+     - spring.profiles.active=peer2
+     - eurekaClientServiceUrlDefaultZonePeer2=http://eurekapeer1:$EUREKA_SERVER_PORT1/eureka
+    extra_hosts:
+      eurekapeer1: $EUREKA_SERVER_IP
+    restart: always
+  order-service-1:
+    mem_limit: 1280M
+    image: springbootstudy_order-service
+    entrypoint: java -jar /app.jar
+    ports:
+     - "8083:8083"
+    environment:
+     - server.port=8083
+     - eurekaClientServiceUrlDefaultZone=http://$EUREKA_SERVER_IP:$EUREKA_SERVER_PORT1/eureka,http://$EUREKA_SERVER_IP:$EUREKA_SERVER_PORT2/eureka,
+    links:
+     - discovery-service-1
+     - discovery-service-2
+    depends_on:
+     - discovery-service-1
+     - discovery-service-2
+    restart: always
+  order-service-2:
+    mem_limit: 1280M
+    image: springbootstudy_order-service
+    entrypoint: java -jar /app.jar
+    ports:
+     - "8084:8084"
+    environment:
+     - server.port=8084
+     - eurekaClientServiceUrlDefaultZone=http://$EUREKA_SERVER_IP:$EUREKA_SERVER_PORT1/eureka,http://$EUREKA_SERVER_IP:$EUREKA_SERVER_PORT2/eureka,
+    links:
+     - discovery-service-1
+     - discovery-service-2
+    depends_on:
+     - discovery-service-1
+     - discovery-service-2
+    restart: always
+  user-service:
+    mem_limit: 1280M
+    image: springbootstudy_user-service
+    entrypoint: java -jar /app.jar
+    ports:
+     - "8085:8085"
+    environment:
+     - server.port=8085
+     - eurekaClientServiceUrlDefaultZone=http://eurekapeer1:$EUREKA_SERVER_PORT1/eureka,http://eurekapeer2:$EUREKA_SERVER_PORT2/eureka,
+    extra_hosts:
+      eurekapeer1: $EUREKA_SERVER_IP
+      eurekapeer2: $EUREKA_SERVER_IP
+    links:
+     - discovery-service-1
+     - discovery-service-2
+     - order-service-1
+     - order-service-2
+    depends_on:
+     - discovery-service-1
+     - discovery-service-2
+     - order-service-1
+     - order-service-2
+    restart: always

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/css/main.css"/>
+    <script src="/js/main.js"></script>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div>
+    id: <span th:text="${blog.id}"></span><br/>
+    title: <span th:text="${blog.title}"></span><br/>
+    createdDate: <span th:text="${#dates.format(blog.createdDate, 'yyyy-MM-dd')}"></span><br/>
+    content: <span th:text="${blog.content}"></span><br/>
+    <a th:href="@{'/blog'}">Go back to index page</a><br/>
+</div>
+</body>
+</html>

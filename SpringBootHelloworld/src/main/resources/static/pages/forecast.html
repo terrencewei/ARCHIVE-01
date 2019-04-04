@@ -1,0 +1,27 @@
+<div ng-cloak class="ng-cloak">
+	<weather-title city-name="{{ city }}" 
+	result="weatherResult" 
+	formatted-p="formatPM25(pm25Info)"
+	date-format="yyyy年M月d日"
+	time-zone="+0800"/>
+</div>
+<hr>
+<div ng-cloak class="ng-cloak">
+	<choose-days days="{{ days }}" is-show-tips="isRouteParamsDaysValid"></choose-days>
+</div>
+<hr>
+<div ng-repeat="w in weatherResult.results[0].weather_data" ng-cloak class="ng-cloak">
+	<div class="row">
+		<div class="col-md-12">
+			<weather-report weather-day="w" />
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div ng-repeat="l in weatherResult.results[0].index" ng-cloak class="ng-cloak">
+		<div class="col-md-2">
+			<life-report life-day="l" formatted-description="formatDescription(description)" />
+		</div>
+	</div>
+</div>

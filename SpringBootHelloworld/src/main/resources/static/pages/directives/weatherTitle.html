@@ -1,0 +1,7 @@
+<div>
+	{{ cityName }}
+	{{ result.date | date : dateFormat : timeZone }}
+	天气预报
+	({{ formattedP( {pm25Info: result.results[0].pm25} ) }})
+	<a href="#!/" class="btn btn-primary">返回</a>
+</div>

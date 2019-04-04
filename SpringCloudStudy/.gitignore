@@ -1,0 +1,5 @@
+/.gradle
+/.idea
+/discovery-service/build/*
+/user-service/build/*
+/order-service/build/*

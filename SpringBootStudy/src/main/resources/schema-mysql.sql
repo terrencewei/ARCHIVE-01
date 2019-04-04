@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS people;
+
+CREATE TABLE people  (
+    person_id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(20),
+    password VARCHAR(20)
+);
