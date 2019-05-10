@@ -1,0 +1,13 @@
+#version: '3'
+# to use memory limit feature in docker-compose, downgrade version to '2'
+version: '2'
+services:
+  mongo_db:
+    build:
+      context: ./mongo_db
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - "./mongo_db/data/db:/data/db"

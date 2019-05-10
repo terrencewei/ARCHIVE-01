@@ -1,0 +1,41 @@
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+.gradle
+gradle/wrapper*
+.mvn/wrapper*
+gradlew*
+/logs
+.log
+mvnw
+
+### MongoDB ###
+docker-compose/mongo_db/data/db
+### Nginx ###
+docker-compose/nginx/www/html
+
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+/build/
+
+### VS Code ###
+.vscode/

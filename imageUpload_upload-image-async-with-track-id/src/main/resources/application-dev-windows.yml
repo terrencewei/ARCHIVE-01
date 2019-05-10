@@ -1,0 +1,13 @@
+spring:
+  data:
+    mongodb:
+      custom:
+        username: admin
+        password: admin
+        database: datawarehouse
+        authenticationDatabase: datawarehouse
+io.aaxis.imageupload.config:
+  upload-handler:
+  upload-file-storage:
+    backupFileLocation: "E:\\webflux\\tmp\\upload\\"
+    imageClouldLocation: "E:\\webflux\\tmp\\upload\\"

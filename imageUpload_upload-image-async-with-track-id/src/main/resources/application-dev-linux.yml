@@ -1,0 +1,19 @@
+spring:
+  data:
+    mongodb:
+      custom:
+        hosts:
+          - 172.17.118.217
+        username: test
+        password: 123456
+        database: datawarehouse
+        authenticationDatabase: datawarehouse
+logging:
+  level:
+    ROOT: INFO
+    io.aaxis.imageupload: DEBUG
+io.aaxis.imageupload.config:
+  upload-handler:
+  upload-file-storage:
+    backupFileLocation: "/tmp/io.aaxis.imageupload.backup/"
+    imageClouldLocation: "/tmp/io.aaxis.imageupload.cloud/"
