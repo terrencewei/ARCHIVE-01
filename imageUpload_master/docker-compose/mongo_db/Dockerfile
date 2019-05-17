@@ -1,8 +1,0 @@
-FROM mongo:4
-ENV WORKSPACE /usr/local/work
-ENV AUTO_RUN_DIR /docker-entrypoint-initdb.d
-ENV INSTALL_MONGO_SHELL setup.sh
-RUN mkdir -p $WORKSPACE
-COPY ./init/*.json $WORKSPACE/
-COPY ./$INSTALL_MONGO_SHELL $AUTO_RUN_DIR/
-RUN chmod a+x $AUTO_RUN_DIR/$INSTALL_MONGO_SHELL

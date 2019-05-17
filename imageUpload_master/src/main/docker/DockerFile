@@ -1,2 +1,0 @@
-FROM java:8
-ADD image-upload-service-0.1.jar app.jar
